@@ -2,7 +2,15 @@ ifeq ($(_THEOS_TARGET_LOADED),)
 _THEOS_TARGET_LOADED := 1
 THEOS_TARGET_NAME := iphone
 
+# Determine toolchain to use based on file existence.
+ifeq ($(SDKTARGET),)
+ifeq ($(wildcard $(THEOS)/toolchain/$(THEOS_PLATFORM_NAME)/$(THEOS_TARGET_NAME)/bin/arm64-apple-darwin14-ld),)
 SDKTARGET ?= armv7-apple-darwin11
+else
+SDKTARGET ?= arm64-apple-darwin14
+endif
+endif
+
 SDKBINPATH ?= $(THEOS)/toolchain/$(THEOS_PLATFORM_NAME)/$(THEOS_TARGET_NAME)/bin
 # TODO: Figure out if hardcoding "/iphone/" in _THEOS_PLATFORM_LIPO's path is a good idea or not
 _THEOS_PLATFORM_LIPO = $(THEOS)/toolchain/$(THEOS_PLATFORM_NAME)/iphone/bin/armv7-apple-darwin11-lipo
