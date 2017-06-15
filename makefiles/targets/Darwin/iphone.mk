@@ -103,7 +103,7 @@ TARGET_LD = $(TARGET_LEGACY_TOOL_PATH)$(_THEOS_TARGET_CXX)
 else
 TARGET_CC ?= xcrun -sdk iphoneos $(_THEOS_TARGET_CC)
 TARGET_CXX ?= xcrun -sdk iphoneos $(_THEOS_TARGET_CXX)
-TARGET_SWIFT ?= xcrun -sdk iphoneos swift
+TARGET_SWIFT ?= swift
 TARGET_LD ?= xcrun -sdk iphoneos $(_THEOS_TARGET_CXX)
 endif
 TARGET_STRIP ?= xcrun -sdk iphoneos strip
